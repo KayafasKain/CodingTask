@@ -1,4 +1,4 @@
-import logging
+from storages.backends.s3boto3 import S3Boto3Storage
 
 from .base import *  # noqa
 from .base import env
@@ -91,7 +91,6 @@ STATIC_URL = 'https://s3.amazonaws.com/%s/static/' % AWS_STORAGE_BUCKET_NAME
 # ------------------------------------------------------------------------------
 
 # region http://stackoverflow.com/questions/10390244/
-from storages.backends.s3boto3 import S3Boto3Storage
 StaticRootS3BotoStorage = lambda: S3Boto3Storage(location='static')  # noqa
 MediaRootS3BotoStorage = lambda: S3Boto3Storage(location='media', file_overwrite=False)  # noqa
 # endregion
@@ -142,7 +141,6 @@ ANYMAIL = {
 # Gunicorn
 # ------------------------------------------------------------------------------
 INSTALLED_APPS += ['gunicorn']  # noqa F405
-
 
 
 # Collectfast

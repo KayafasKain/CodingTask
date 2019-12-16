@@ -11,3 +11,15 @@
   background-color: #f2dede;
   border-color: #eed3d7;
 }
+
+.data_saver_container {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.data_saver_container form {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 20px;
+}

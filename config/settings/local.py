@@ -17,8 +17,12 @@ ALLOWED_HOSTS = [
 # DATABASES
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'hhcodingtask.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'new_cxtest',
+        'USER': 'super_user',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 

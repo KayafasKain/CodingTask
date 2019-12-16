@@ -71,7 +71,7 @@ THIRD_PARTY_APPS = [
 ]
 LOCAL_APPS = [
     'hhcodingtask.users.apps.UsersConfig',
-    # Your stuff: custom apps go here
+    'hhcodingtask.data_saver.apps.DataSaverConfig',
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -238,3 +238,10 @@ SOCIALACCOUNT_ADAPTER = 'hhcodingtask.users.adapters.SocialAccountAdapter'
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+
+FLEXIBLE_FORM = {
+    'First Name': str,
+    'Last Name': str,
+    'Age': int,
+    'Score': float,
+}

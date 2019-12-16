@@ -1,5 +1,5 @@
 CNXION Coding Task
-==============
+==================
 
 This is CNXION coding task.
 
@@ -82,3 +82,35 @@ Example: python dict that describes fields/types etc.
 **A:** Let's assume it should follow standard Python conventions like: be PEP-8 complaint, follow The Zen of Python: https://www.python.org/dev/peps/pep-0020/ In broader sense it should follow well known software principles like SOLID, KISS, DRY etc.
 
 
+Solution
+========
+
+DB/model selection
+------------------
+
+My first thought was to use Mongodb, since this database is build to use document-oriented model, which is extremely flexible unlike relational. Yet, i had to take into account such things as standart Django ORM and task conditions, which, for my oppinion, was quite certain about desirable data model.
+
+So, it was decided to use a Potsgres as RDBMS, for a following reasons:
+
+* I had an expirience with postgres
+* Posthres supports JSON fields
+
+Django model
+------------
+
+The model consists of following fields:
+
+* id - unique record identifier
+* data - json field, to store the data
+
+Solution explanation
+--------------------
+
+In order to make Django form meet requirements i had to override several methods:
+
+* __init__ - these where the magic happens, at least for the regular form. In these method i am specifying new fields by looping over the list of dictionaries, which contains information about desirable fields (you can find `FLEXIBLE_FORM` in `base` settings). Default values are also getting assigned here.
+* save - redefined, in order to adapt data from `flexible fields` to format, known to the database.
+
+I also had to redefine `get_fields` method from GenericModelAdmin in similar way to `__init__` from `FlexibleForm`,  it was necesserry in order to make `flexible fields` appear in admin interface.
+
+Model-level validation is also provided, by comparing expected field types and actual. Valiation itself happens in redefined `save` method of the model.

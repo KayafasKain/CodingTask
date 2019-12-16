@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+{% block title %} Save the data{% endblock %}
+{% block content %}
+    {% block data_saver %}
+    <div class="data_saver_container">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% for field in form.visible_fields %}
+            <div class="wrapper">
+                {{field.label_tag}}
+                {{field}}
+                <ul class="smth">
+                    {%for error in field.errors%}
+                    <li class="smth2">
+                        {{error|escape}}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+            <input type="submit" value="submit">
+        </form>
+    </div>
+    {% endblock %}
+{% endblock %}
